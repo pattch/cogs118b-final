@@ -1,0 +1,3 @@
+genre1:these are test lyrics
+genre2:also test lyrics
+genre1:this is a test please ignore
