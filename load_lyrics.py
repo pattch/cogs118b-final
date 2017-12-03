@@ -1,6 +1,6 @@
 import numpy as np
 import pandas
-import progressbar
+from scipy import sparse
 
 # Load the input file as numpy array with a list of genres and words
 def load(fname,verbose=False):
@@ -48,13 +48,13 @@ def load_bag_of_words(fname,raw=False,verbose=False):
         word = words[i]
         wd[word] = i
 
+    print('about to start building song vectors')
     # Calculate word counts for each of the lyrics
-    x_ = []
-    for lyric in x:
-        l = [0] * num_words
+    x_ = sparse.lil_matrix((x.shape[0],num_words),dtype=np.int8)
+    for i in range(10000):
+        lyric = x[lyric]
         for word in lyric.split():
-            l[wd[word]] += 1
-        x_.append(l)
+            idx = wd[word]
+            x_[i,idx] += 1
 
-    x_ = np.array(x_)
     return (x_,y,genres,words)
