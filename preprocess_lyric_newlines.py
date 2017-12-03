@@ -28,7 +28,7 @@ def process_lyrics(l):
     lyrics_ = l[-1].lower()
 
     # Remove words that only contained garbage characters, lemmatize and remove stop words
-    lyrics = ' '.join([pattern.sub('',lemmatizer.lookup(word)).lower() for word in lyrics_ if word and not nlp.vocab[word].is_stop])
+    lyrics = [pattern.sub('',lemmatizer.lookup(word)).lower() for word in lyrics_ if word and not nlp.vocab[word].is_stop]
     # lyrics = [pattern.sub('',token.lemma_) for token in nlp(lyrics_) if not token.is_stop]
     lyrics = ' '.join([word for word in lyrics if word])
     if lyrics:
