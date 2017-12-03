@@ -5,6 +5,9 @@ nlp = spacy.load('en')
 from spacy.lang.en import LEMMA_INDEX, LEMMA_EXC, LEMMA_RULES
 import progressbar
 
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 pattern = re.compile('[\W_]+')
 infile = 'lyrics100.csv'
 outfile = 'lyrics100cleaned.csv'
