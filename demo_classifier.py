@@ -2,7 +2,7 @@ from load_lyrics import load_bag_of_words
 from sklearn.ensemble import RandomForestClassifier as RFC
 from sklearn.tree import DecisionTreeClassifier
 
-test_file,lyrics_file = 'test_lyrics.txt','lyricscleaned.csv'
+test_file,lyrics_file = 'test_lyrics.txt','lyrics100cleaned.csv'
 
 def classify(fname):
     print('Loading',fname)
