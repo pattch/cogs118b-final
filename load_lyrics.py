@@ -36,11 +36,10 @@ def load_bag_of_words(fname):
         word = words[i]
         wd[word] = i
 
-    print('about to start building song vectors')
     # Calculate word counts for each of the lyrics
     x_ = sparse.lil_matrix((x.shape[0],num_words),dtype=np.int8)
-    for i in range(10000):
-        lyric = x[lyric]
+    for i in range(x.shape[0]):
+        lyric = x[i]
         for word in lyric.split():
             idx = wd[word]
             x_[i,idx] += 1
