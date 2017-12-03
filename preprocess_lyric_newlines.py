@@ -1,14 +1,14 @@
 import csv, re, sys
 import spacy
-# from spacy.lemmatizer import Lemmatizer
+from spacy.lemmatizer import Lemmatizer
 nlp = spacy.load('en')
-# from spacy.lang.en import LEMMA_INDEX, LEMMA_EXC, LEMMA_RULES
+from spacy.lang.en import LEMMA_INDEX, LEMMA_EXC, LEMMA_RULES
 import progressbar
 
 pattern = re.compile('[\W_]+')
 infile = 'lyrics100.csv'
 outfile = 'lyrics100cleaned.csv'
-# lemmatizer = Lemmatizer(LEMMA_INDEX,LEMMA_EXC,LEMMA_RULES)
+lemmatizer = Lemmatizer(LEMMA_INDEX,LEMMA_EXC,LEMMA_RULES)
 
 if len(sys.argv) > 1:
     infile = sys.argv[1]
@@ -28,14 +28,12 @@ def process_lyrics(l):
     lyrics_ = l[-1].lower()
 
     # Remove words that only contained garbage characters, lemmatize and remove stop words
-    # lyrics = ' '.join([pattern.sub('',lemmatizer.lookup(word)).lower() for word in lyrics_ if word and not nlp.vocab[word].is_stop])
-    lyrics = [pattern.sub('',token.lemma_) for token in nlp(lyrics_) if not token.is_stop]
+    lyrics = ' '.join([pattern.sub('',lemmatizer.lookup(word)).lower() for word in lyrics_ if word and not nlp.vocab[word].is_stop])
+    # lyrics = [pattern.sub('',token.lemma_) for token in nlp(lyrics_) if not token.is_stop]
     lyrics = ' '.join([word for word in lyrics if word])
     if lyrics:
         # Format for writing to file
         return genre + ':' + lyrics
-    else:
-        return genre + ':' + ' '.join(lyrics_)
 
 with open(infile) as f:
     next(f)
