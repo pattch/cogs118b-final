@@ -49,7 +49,7 @@ with open(infile,'rt',encoding='utf-8') as f:
 
 print('Finished Processing. Writing to',outfile)
 print(len(lyrics))
-with open(outfile,'w') as f:
+with open(outfile,'w',encoding='utf-8') as f:
     for l in lyrics:
         # print(l)
         f.write(l + '\n')
