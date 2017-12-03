@@ -26,7 +26,7 @@ def load_one_hot_lyrics(fname):
     return (x,y,genres,words)
 
 # Load the input file with one-hot representation for genres and word count vectors
-def load_bag_of_words(fname,raw=False):
+def load_bag_of_words(fname):
     x,y,genres,words = load_one_hot_lyrics(fname)
 
     # Build dict from word -> index
