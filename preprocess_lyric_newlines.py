@@ -5,9 +5,6 @@ nlp = spacy.load('en')
 from spacy.lang.en import LEMMA_INDEX, LEMMA_EXC, LEMMA_RULES
 import progressbar
 
-reload(sys)
-sys.setdefaultencoding('utf8')
-
 pattern = re.compile('[\W_]+')
 infile = 'lyrics100.csv'
 outfile = 'lyrics100cleaned.csv'
@@ -19,7 +16,7 @@ if len(sys.argv) > 1:
     outfile = outfile[0] + 'cleaned.' + outfile[1]
 print('Processing',infile)
 
-with open(infile) as f:
+with open(infile,'r',encoding='utf-8') as f:
     for i,l in enumerate(f):
         pass
 word_count = i+1
@@ -38,7 +35,7 @@ def process_lyrics(l):
         # Format for writing to file
         return genre + ':' + lyrics
 
-with open(infile) as f:
+with open(infile,'rt',encoding='utf-8') as f:
     next(f)
     data = csv.reader(f,delimiter=',',quotechar='"')
     lyrics = []
