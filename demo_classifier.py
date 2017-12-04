@@ -6,7 +6,7 @@ test_file,lyrics_file = 'test_lyrics.txt','lyrics100cleaned.csv'
 
 def classify(fname):
     print('Loading',fname)
-    x,y,genres,words = load_bag_of_words(fname,raw=False,verbose=True)
+    x,y,genres,words = load_bag_of_words(fname)
 
     print('X Shape:',x.shape,'Y Shape:',y.shape,'Genres:',len(genres),genres,'Word Count:',len(words))
 
